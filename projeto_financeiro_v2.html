@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Financeiro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra lateral com menu suspenso e logo -->
+    <div class="sidebar">
+        <img src="image.jpg" alt="Logo Financeiro" class="logo">
+        <nav class="menu">
+            <a href="#overview" onclick="showSection('overview')">Visão Geral</a>
+            <a href="#budgets" onclick="showSection('budgets')">Orçamentos</a>
+            <a href="#reports" onclick="showSection('reports')">Relatórios</a>
+            <a href="#goals" onclick="showSection('goals')">Metas</a>
+        </nav>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="content">
+        <!-- Seção de Visão Geral -->
+        <div id="overview" style="display: block;">
+            <h2>Visão Geral</h2>
+            <div class="summary">
+                <h3>Resumo Financeiro</h3>
+                <p>Saldo Atual: <span id="currentBalance">€0,00</span></p>
+                <p>Receitas Totais: <span id="totalIncome">€0,00</span></p>
+                <p>Despesas Totais: <span id="totalExpense">€0,00</span></p>
+            </div>
+            <div id="transactions">
+                <h3>Transações Recentes</h3>
+                <!-- Aqui serão listadas as transações -->
+            </div>
+            <div class="chart-container">
+                <canvas id="overviewChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Seção de Orçamentos -->
+        <div id="budgets" style="display: none;">
+            <h2>Orçamentos</h2>
+            <div class="budget-form">
+                <h3>Definir Orçamento</h3>
+                <label for="budgetCategory">Categoria:</label>
+                <select id="budgetCategory">
+                    <option value="Alimentação">Alimentação</option>
+                    <option value="Lazer">Lazer</option>
+                    <option value="Educação">Educação</option>
+                    <!-- Adicione outras categorias conforme necessário -->
+                </select>
+                <label for="budgetAmount">Valor (€):</label>
+                <input type="number" id="budgetAmount" step="0.01" placeholder="Valor do orçamento">
+                <button onclick="addBudget()">Definir Orçamento</button>
+            </div>
+            <div class="budget-overview">
+                <h3>Acompanhamento dos Orçamentos</h3>
+                <!-- Aqui serão exibidos os orçamentos e o progresso -->
+            </div>
+        </div>
+
+        <!-- Seção de Relatórios -->
+        <div id="reports" style="display: none;">
+            <h2>Relatórios</h2>
+            <div class="report-form">
+                <h3>Gerar Relatório</h3>
+                <label for="reportType">Tipo de Relatório:</label>
+                <select id="reportType">
+                    <option value="receitas">Receitas</option>
+                    <option value="despesas">Despesas</option>
+                    <option value="investimentos">Investimentos</option>
+                </select>
+                <label for="reportPeriod">Período:</label>
+                <input type="month" id="reportPeriod">
+                <button onclick="generateReport()">Gerar Relatório</button>
+            </div>
+            <div class="report-result">
+                <h3>Relatório Gerado</h3>
+                <div id="reportContent">
+                    <!-- Aqui será exibido o conteúdo dos relatórios -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Metas -->
+        <div id="goals" style="display: none;">
+            <h2>Metas</h2>
+            <div class="goal-form">
+                <h3>Definir Nova Meta</h3>
+                <label for="goalDescription">Descrição:</label>
+                <input type="text" id="goalDescription" placeholder="Ex: Viagem dos sonhos">
+                <label for="goalAmount">Valor (€):</label>
+                <input type="number" id="goalAmount" step="0.01" placeholder="Valor da meta">
+                <label for="goalDeadline">Data Limite:</label>
+                <input type="date" id="goalDeadline">
+                <button onclick="addGoal()">Definir Meta</button>
+            </div>
+            <div class="goal-progress">
+                <h3>Progresso das Metas</h3>
+                <!-- Aqui serão exibidas as metas com progresso -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 Projeto Financeiro - Criado por <strong>Alex Oliveira</strong></p>
+            <p>Todos os direitos reservados.</p>
+            <p><a href="https://github.com/your-repo" target="_blank">Veja o código no GitHub</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script> <!-- Certifique-se de que app.js está carregado -->
+</body>
+</html>

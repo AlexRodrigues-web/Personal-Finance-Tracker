@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Barra lateral (Sidebar) */
+.sidebar {
+    background-color: #2c3e50;
+    color: white;
+    width: 250px;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar .logo {
+    width: 60%;
+    height: 80px;
+    border-radius: 100%;
+    margin-bottom: 100px;
+    object-fit: cover;
+}
+
+.sidebar .menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.sidebar .menu a {
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 18px;
+}
+
+.sidebar .menu a:hover {
+    background-color: #34495e;
+}
+
+/* Conteúdo Principal */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    flex-grow: 1;
+    padding-bottom: 100px; /* espaço para rodapé */
+}
+
+/* Títulos das seções */
+.content h2 {
+    color: #2c3e50;
+    font-size: 32px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* Texto explicativo */
+.content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+.content strong {
+    color: #3498db;
+    font-weight: bold;
+}
+
+/* Formulário de Transações */
+.transaction-form input,
+.transaction-form select,
+.transaction-form button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.transaction-form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.transaction-form button:hover {
+    background-color: #2980b9;
+}
+
+/* Compartilhamento e impressão */
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.share-buttons button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    flex-grow: 1;
+    max-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-buttons button i {
+    margin-right: 8px;
+}
+
+.share-buttons button:hover {
+    background-color: #062e49;
+    transform: translateY(-3px);
+}
+
+.share-buttons button:active {
+    transform: translateY(1px);
+}
+
+/* Seções específicas (Orçamento, Relatório, Meta) */
+#overview, #budgets, #reports, #goals {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Estilização para o Orçamento */
+#budgets .budget-item {
+    background-color: #ecf0f1;
+    padding: 12px;
+    border-radius: 5px;
+    margin: 10px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização para o Relatório */
+#reports .report-item {
+    background-color: #ecf0f1;
+    padding: 12px;
+    border-radius: 5px;
+    margin: 10px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização para a Meta */
+#goals .goal-item {
+    background-color: #ecf0f1;
+    padding: 12px;
+    border-radius: 5px;
+    margin: 10px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        margin-left: 200px;
+    }
+
+    .share-buttons {
+        justify-content: space-between;
+    }
+
+    .share-buttons button {
+        min-width: 120px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .share-buttons {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .share-buttons button {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+}
+
+/* Estilização do Rodapé */
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footer .footer-content p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.footer .footer-content a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.footer .footer-content a:hover {
+    text-decoration: underline;
+}
+
+/* Estilização dos botões */
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Estilização específica dos botões de ação */
+button#chartTypeButton,
+button#generateReportButton,
+button#addBudgetButton,
+button#addGoalButton {
+    width: 100%;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button#chartTypeButton {
+    background-color: #2ecc71;
+}
+
+button#generateReportButton {
+    background-color: #f39c12;
+}
+
+button#addBudgetButton {
+    background-color: #e74c3c;
+}
+
+button#addGoalButton {
+    background-color: #9b59b6;
+}
+
+/* Efeito hover específico para cada botão */
+button#chartTypeButton:hover {
+    background-color: #27ae60;
+}
+
+button#generateReportButton:hover {
+    background-color: #f1c40f;
+}
+
+button#addBudgetButton:hover {
+    background-color: #c0392b;
+}
+
+button#addGoalButton:hover {
+    background-color: #8e44ad;
+}
+
+/* Container do gráfico */
+.chart-container {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.chart-container:hover {
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+#myChart {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#chartType {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    padding: 10px 20px;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-top: 15px;
+}
+/* Estilização do Rodapé */
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footer .footer-content p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.footer .footer-content a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.footer .footer-content a:hover {
+    text-decoration: underline;
+}
+
+/* Estilização dos botões de compartilhamento no rodapé */
+.footer .footer-content .share-buttons {
+    display: inline-flex;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.footer .footer-content .share-buttons button {
+    color: white;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3498db;
+    width: 35px; /* Largura e altura iguais para circular */
+    height: 35px;
+    border-radius: 50%; /* Torna o botão redondo */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer .footer-content .share-buttons button:hover {
+    background-color: #2980b9; /* Cor de hover */
+}
+
+.footer .footer-content .share-buttons button i {
+    font-size: 16px; /* Tamanho do ícone */
+    margin: 0;
+}
+

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://kit.fontawesome.com/da1553a69c.js" crossorigin="anonymous"></script> <!-- Para ícones -->
+</head>
+<body>
+    <!-- Barra lateral com menu -->
+    <div class="sidebar">
+        <img src="image.jpg" alt="Logo Financeiro" class="logo">
+        <nav class="menu">
+            <a href="#overview" onclick="showSection('overview')">Visão Geral</a>
+            <a href="#budgets" onclick="showSection('budgets')">Orçamentos</a>
+            <a href="#reports" onclick="showSection('reports')">Relatórios</a>
+            <a href="#goals" onclick="showSection('goals')">Metas</a>
+        </nav>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="content">
+        <!-- Seção de Visão Geral -->
+        <div id="overview" class="section" style="display: block;">
+            <h2>Visão Geral</h2>
+            <div class="transaction-form">
+                <h3>Adicionar Transação</h3>
+                <label for="amount">Valor (€):</label>
+                <input type="number" id="amount" step="0.01" placeholder="Digite o valor">
+
+                <label for="type">Tipo de Transação:</label>
+                <select id="type" required>
+                    <option value="" disabled selected>Selecione a transação desejada</option>
+                    <option value="Receita">Receita</option>
+                    <option value="Despesa">Despesa</option>
+                    <option value="Investimento">Investimento</option>
+                    <option value="Rendimento">Rendimento</option>
+                </select>
+
+                <label for="interest">Juros (%):</label>
+                <input type="number" id="interest" step="0.01" placeholder="Digite a taxa de juros">
+
+                <label for="description">Descrição:</label>
+                <input type="text" id="description" placeholder="Descrição opcional">
+
+                <button type="button" onclick="addTransaction()">Adicionar Transação</button>
+            </div>
+
+            <div id="transactions">
+                <h3>Transações Recentes</h3>
+                <!-- Transações listadas pelo JavaScript -->
+            </div>
+
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+                <select id="chartType" onchange="changeChartType()">
+                    <option value="bar">Gráfico de Barras</option>
+                    <option value="line">Gráfico de Linhas</option>
+                    <option value="pie">Gráfico de Pizza</option>
+                </select>
+            </div>
+
+           
+            
+            </div>
+
+        <!-- Seção de Orçamentos -->
+        <div id="budgets" class="section" style="display: none;">
+            <h2>Orçamentos</h2>
+            <p>Um orçamento bem elaborado é fundamental para ter controle sobre suas finanças pessoais. Ao planejar seu orçamento, você pode garantir que está destinando dinheiro para as áreas mais importantes da sua vida.</p>
+            <p><strong>Dica:</strong> Comece categorizando suas despesas fixas e variáveis. As despesas fixas incluem aluguel, contas e outras obrigações mensais, enquanto as variáveis podem ser alimentação, lazer, entre outras.</p>
+            <p>Adicione orçamentos para monitorar suas despesas e garantir que está dentro do planejado para cada categoria.</p>
+
+            <div class="budget-form">
+                <label for="budgetCategory">Categoria:</label>
+                <input type="text" id="budgetCategory" placeholder="Ex: Alimentação, Transporte">
+                
+                <label for="budgetAmount">Valor do Orçamento (€):</label>
+                <input type="number" id="budgetAmount" placeholder="Digite o valor do orçamento">
+
+                <button type="button" onclick="addBudget()">Adicionar Orçamento</button>
+            </div>
+
+            <div id="budget-list">
+                <h3>Orçamentos Definidos</h3>
+                <!-- Lista de orçamentos será exibida aqui -->
+            </div>
+        </div>
+
+        <!-- Seção de Relatórios -->
+        <div id="reports" class="section" style="display: none;">
+            <h2>Relatórios</h2>
+            <p>Os relatórios financeiros são fundamentais para entender sua situação financeira atual. Eles ajudam a visualizar as receitas, despesas e o desempenho de suas finanças ao longo do tempo.</p>
+            <p><strong>Dica:</strong> Use os relatórios para verificar se você está seguindo seu orçamento corretamente e identificar áreas em que pode reduzir gastos ou aumentar a poupança.</p>
+            <p>Para gerar um relatório financeiro, clique no botão abaixo e você terá uma visão clara de suas finanças.</p>
+
+            <button type="button" onclick="generateReport()">Gerar Relatório</button>
+            <div id="report-output">
+                <!-- Relatório gerado será exibido aqui -->
+            </div>
+        </div>
+
+        <!-- Seção de Metas -->
+        <div id="goals" class="section" style="display: none;">
+            <h2>Metas</h2>
+            <p>Definir metas financeiras é uma excelente forma de garantir que você está no caminho certo para atingir seus objetivos a curto, médio e longo prazo. Seja para comprar um imóvel, viajar ou investir na aposentadoria, as metas ajudam a direcionar sua economia.</p>
+            <p><strong>Dica:</strong> Ao definir uma meta financeira, divida o valor total por prazos menores, isso torna a meta mais alcançável e motiva você a continuar economizando.</p>
+            <p>Defina suas metas financeiras e acompanhe seu progresso ao longo do tempo.</p>
+
+            <div class="goal-form">
+                <label for="goalName">Nome da Meta:</label>
+                <input type="text" id="goalName" placeholder="Ex: Viagem, Aposentadoria">
+                
+                <label for="goalAmount">Valor da Meta (€):</label>
+                <input type="number" id="goalAmount" placeholder="Digite o valor da meta">
+
+                <button type="button" onclick="addGoal()">Adicionar Meta</button>
+            </div>
+
+            <div id="goal-list">
+                <h3>Metas Definidas</h3>
+                <!-- Lista de metas será exibida aqui -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé fixo -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 Projeto Financeiro - Criado por <strong>Alex Oliveira</strong></p>
+            <p>Todos os direitos reservados.</p>
+            <p><a href="https://github.com/your-repo" target="_blank">Veja o código no GitHub</a></p>
+
+            <!-- Botões de Compartilhamento e Ação -->
+            <div class="share-buttons">
+                <button type="button" onclick="shareFacebook()"><i class="fab fa-facebook-f"></i></button>
+                <button type="button" onclick="shareTwitter()"><i class="fab fa-twitter"></i></button>
+                <button type="button" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i></button>
+                <button type="button" id="shareEmailButton"><i class="fas fa-envelope"></i></button>
+                <button type="button" onclick="window.print()"><i class="fas fa-print"></i></button>
+                <button type="button" onclick="saveAsPDF()"><i class="fas fa-file-pdf"></i></button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script> 
+</body>
+</html>
