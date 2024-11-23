@@ -19,4 +19,4 @@ Para rodar este projeto em sua máquina local, siga os seguintes passos:
 No terminal, clone o repositório:
 
 ```bash
-git clone https://github.com/usuario/repo.git
+git clone https://github.com/AlexRodrigues-web/Personal-Finance-Tracker.git
